@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modernización de Red 2026 | Voucher Comercial</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (gratuito) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .voucher {
+            max-width: 1200px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0, 20, 40, 0.15), 0 10px 25px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        /* HEADER con gradiente y logo */
+        .header {
+            background: linear-gradient(145deg, #0b1a2e 0%, #1a2f44 100%);
+            padding: 50px 50px 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0, 180, 255, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .header-grid {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-placeholder {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.12);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: #00b4ff;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.10);
+        }
+
+        .header-title h1 {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .header-title .badge {
+            display: inline-block;
+            background: rgba(0, 180, 255, 0.20);
+            color: #7fc9ff;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 16px;
+            border-radius: 20px;
+            margin-top: 6px;
+            letter-spacing: 0.5px;
+            border: 1px solid rgba(0, 180, 255, 0.15);
+        }
+
+        .header-right {
+            text-align: right;
+        }
+
+        .header-right .year {
+            font-size: 14px;
+            font-weight: 400;
+            opacity: 0.7;
+            letter-spacing: 2px;
+        }
+
+        .header-right .tagline {
+            font-size: 16px;
+            font-weight: 600;
+            color: #7fc9ff;
+            margin-top: 4px;
+        }
+
+        /* HERO BANNER (imagen principal) */
+        .hero-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #0b1a2e 0%, #1f3a5a 100%);
+            background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=2000&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay {
+            background: linear-gradient(135deg, rgba(11, 26, 46, 0.75) 0%, rgba(0, 180, 255, 0.15) 100%);
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .hero-text {
+            text-align: center;
+            color: white;
+            max-width: 800px;
+        }
+
+        .hero-text h2 {
+            font-size: 38px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-text h2 span {
+            color: #7fc9ff;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-top: 12px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* CONTENIDO PRINCIPAL */
+        .content {
+            padding: 50px 50px 40px;
+        }
+
+        /* INTRO */
+        .intro {
+            margin-bottom: 40px;
+        }
+
+        .intro .pill {
+            display: inline-block;
+            background: #e8f4fd;
+            color: #0b1a2e;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 18px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .intro h3 {
+            font-size: 26px;
+            font-weight: 800;
+            color: #0b1a2e;
+            line-height: 1.3;
+        }
+
+        .intro h3 span {
+            color: #0066b3;
+        }
+
+        .intro p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #2d4055;
+            max-width: 900px;
+            margin-top: 10px;
+            font-weight: 400;
+        }
+
+        .vendor-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .vendor-tags span {
+            background: #f0f4f8;
+            color: #1a2f44;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* GRID DE 3 COLUMNAS (Alcance) */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .card {
+            background: #f8fafc;
+            border-radius: 20px;
+            padding: 28px 24px;
+            border: 1px solid #eef2f6;
+            transition: all 0.25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 20, 40, 0.08);
+            border-color: #cbd5e1;
+        }
+
+        .card .icon {
+            font-size: 32px;
+            color: #0066b3;
+            margin-bottom: 14px;
+        }
+
+        .card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0b1a2e;
+            margin-bottom: 8px;
+        }
+
+        .card p,
+        .card li {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #2d4055;
+        }
+
+        .card ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 6px;
+        }
+
+        .card ul li {
+            padding: 4px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .card ul li i {
+            color: #00b4ff;
+            font-size: 13px;
+            margin-top: 4px;
+            min-width: 16px;
+        }
+
+        /* TABLA COMPARATIVA */
+        .comparativa {
+            margin: 45px 0 30px;
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 30px 30px 20px;
+            border: 1px solid #eef2f6;
+        }
+
+        .comparativa h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0b1a2e;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .comparativa h4 i {
+            color: #0066b3;
+        }
+
+        .comparativa table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+
+        .comparativa th {
+            text-align: left;
+            padding: 12px 16px;
+            background: #eef2f6;
+            color: #0b1a2e;
+            font-weight: 700;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .comparativa td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #e2e8f0;
+            color: #1a2f44;
+        }
+
+        .comparativa td:first-child {
+            font-weight: 600;
+            color: #0b1a2e;
+        }
+
+        .comparativa .check {
+            color: #00a86b;
+            font-weight: 700;
+        }
+
+        .comparativa .cross {
+            color: #b91c1c;
+            font-weight: 300;
+        }
+
+        /* BENEFICIOS MEDIBLES */
+        .beneficios-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 35px 0 30px;
+        }
+
+        .beneficio-item {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 22px 18px;
+            text-align: center;
+            border: 1px solid #eef2f6;
+        }
+
+        .beneficio-item .num {
+            font-size: 28px;
+            font-weight: 900;
+            color: #0066b3;
+        }
+
+        .beneficio-item .label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a2f44;
+            margin-top: 4px;
+        }
+
+        .beneficio-item .desc {
+            font-size: 12px;
+            color: #4a5f77;
+            margin-top: 2px;
+        }
+
+        /* METODOLOGÍA */
+        .metodologia {
+            margin: 40px 0 30px;
+        }
+
+        .metodologia h4 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0b1a2e;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .metodologia h4 i {
+            color: #0066b3;
+        }
+
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .step {
+            background: #f8fafc;
+            border-radius: 40px;
+            padding: 10px 22px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #0b1a2e;
+            border: 1px solid #eef2f6;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step .num {
+            background: #0b1a2e;
+            color: white;
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* CTA FOOTER */
+        .cta-section {
+            background: linear-gradient(145deg, #0b1a2e 0%, #1a2f44 100%);
+            border-radius: 24px;
+            padding: 40px 40px 35px;
+            margin-top: 40px;
+            color: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .cta-section .cta-text h4 {
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .cta-section .cta-text p {
+            font-size: 15px;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+
+        .cta-section .cta-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: #00b4ff;
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary:hover {
+            background: #0099dd;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 180, 255, 0.30);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.10);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.20);
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.18);
+            border-color: rgba(255, 255, 255, 0.40);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 30px 50px 25px;
+            border-top: 1px solid #eef2f6;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-size: 13px;
+            color: #4a5f77;
+        }
+
+        .footer .note {
+            font-style: italic;
+            opacity: 0.7;
+            max-width: 500px;
+        }
+
+        .footer .note strong {
+            font-style: normal;
+            color: #0b1a2e;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 992px) {
+            .grid-3 {
+                grid-template-columns: 1fr 1fr;
+            }
+            .beneficios-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .header {
+                padding: 30px 30px 25px;
+            }
+            .content {
+                padding: 30px 30px 25px;
+            }
+            .hero-text h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .beneficios-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .header-grid {
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+            }
+            .header-right {
+                text-align: left;
+                width: 100%;
+            }
+            .header-title h1 {
+                font-size: 22px;
+            }
+            .hero-text h2 {
+                font-size: 22px;
+            }
+            .hero-text p {
+                font-size: 15px;
+            }
+            .cta-section {
+                flex-direction: column;
+                text-align: center;
+            }
+            .cta-section .cta-buttons {
+                justify-content: center;
+            }
+            .comparativa table {
+                font-size: 12px;
+            }
+            .comparativa th,
+            .comparativa td {
+                padding: 8px 10px;
+            }
+            .content {
+                padding: 20px;
+            }
+            .header {
+                padding: 20px;
+            }
+            .footer {
+                padding: 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+            .steps {
+                gap: 8px;
+            }
+            .step {
+                font-size: 12px;
+                padding: 6px 16px;
+            }
+        }
+
+        @media (max-width: 440px) {
+            .beneficios-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero-text h2 {
+                font-size: 18px;
+            }
+            .btn-primary,
+            .btn-secondary {
+                padding: 12px 22px;
+                font-size: 14px;
+                width: 100%;
+                justify-content: center;
+            }
+            .cta-section .cta-buttons {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="voucher">
+
+        <!-- ========== HEADER ========== -->
+        <div class="header">
+            <div class="header-grid">
+                <div class="header-left">
+                    <div class="logo-placeholder">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <div class="header-title">
+                        <h1>Modernización de Red 2026</h1>
+                        <div class="badge"><i class="fas fa-robot" style="margin-right:6px;"></i> IAOps · Autonomía · Eficiencia</div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="year">SERVICIO 2026</div>
+                    <div class="tagline">Migración controlada · Vendor Agnostic</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== HERO IMAGEN ========== -->
+        <div class="hero-image">
+            <div class="hero-overlay">
+                <div class="hero-text">
+                    <h2>De <span>legacy</span> a <span>inteligencia</span> operativa</h2>
+                    <p>Migración controlada · IAOps · Eficiencia energética · Red autónoma</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== CONTENIDO ========== -->
+        <div class="content">
+
+            <!-- INTRO -->
+            <div class="intro">
+                <div class="pill"><i class="fas fa-bolt" style="margin-right:6px;"></i> 2026 Ready</div>
+                <h3>Transformamos tu red <span>sin rediseñarla</span></h3>
+                <p>
+                    Reemplazamos switches de cualquier fabricante por plataformas de última generación,
+                    manteniendo tu diseño lógico actual (VLANs, IPs, trunks, STP, uplinks).
+                    <strong>No es solo un cambio de hardware</strong> — es la evolución hacia una
+                    red autónoma, gestionada por IA y preparada para los próximos 7 años.
+                </p>
+                <div class="vendor-tags">
+                    <span>Cisco</span> <span>HPE Aruba</span> <span>Juniper</span> <span>Extreme</span>
+                    <span>Ruckus</span> <span>Fortinet</span> <span>Alcatel-Lucent</span>
+                    <span>Dell</span> <span>Huawei</span> <span>ZTE</span> <span>MikroTik</span>
+                    <span>Ubiquiti</span> <span>Allied Telesis</span> <span>D-Link</span>
+                    <span>TP-Link</span> <span>Zyxel</span> <span>Netgear</span> <span>Edge-Core</span>
+                    <span>Lenovo</span> <span>Siemens</span> <span>Schneider</span> <span>Moxa</span>
+                    <span>Hirschmann</span> <span>Belden</span> <span>Rockwell</span>
+                    <span style="background:#e8f4fd; font-weight:700;">+ cualquier otro</span>
+                </div>
+            </div>
+
+            <!-- GRID 3 COLUMNAS: ALCANCE -->
+            <div class="grid-3">
+                <div class="card">
+                    <div class="icon"><i class="fas fa-server"></i></div>
+                    <h4>1. Migración controlada</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Core redundante en stack</li>
+                        <li><i class="fas fa-check-circle"></i> Access Layer PoE inteligente</li>
+                        <li><i class="fas fa-check-circle"></i> Migración 1:1 (VLANs, IPs, uplinks)</li>
+                        <li><i class="fas fa-check-circle"></i> 2 ventanas con rollback</li>
+                        <li><i class="fas fa-check-circle"></i> Soporte remoto + onsite</li>
+                        <li><i class="fas fa-check-circle"></i> Asesoría de vendor según tu caso</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-brain"></i></div>
+                    <h4>2. IAOps & Gestión</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> AI Insights predictivos</li>
+                        <li><i class="fas fa-check-circle"></i> Recomendaciones automáticas</li>
+                        <li><i class="fas fa-check-circle"></i> Visibilidad unificada</li>
+                        <li><i class="fas fa-check-circle"></i> Zero-Touch Provisioning (ZTP)</li>
+                        <li><i class="fas fa-check-circle"></i> Automatización + API RESTful</li>
+                        <li><i class="fas fa-check-circle"></i> PoE Scheduling (ahorro -30%)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>3. Seguridad & Entregables</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Port Security / BPDUguard</li>
+                        <li><i class="fas fa-check-circle"></i> DHCP Snooping / ARP Inspection</li>
+                        <li><i class="fas fa-check-circle"></i> Detección IA de dispositivos rogue</li>
+                        <li><i class="fas fa-check-circle"></i> Preparación para NAC</li>
+                        <li><i class="fas fa-check-circle"></i> Documentación As-Built</li>
+                        <li><i class="fas fa-check-circle"></i> Knowledge Transfer + 30 días de soporte</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- TABLA COMPARATIVA -->
+            <div class="comparativa">
+                <h4><i class="fas fa-chart-line"></i> Valor diferencial 2026: Antes vs. Después</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aspecto</th>
+                            <th>Antes (red legacy)</th>
+                            <th>Después (modernizada con IA)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monitoreo</td>
+                            <td>SNMP + alarms por email <span class="cross">(reactivo)</span></td>
+                            <td>IA predictiva con insights <span class="check">(proactivo)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Resolución de incidentes</td>
+                            <td>Manual, horas o días</td>
+                            <td>Automática o con recomendación, <span class="check">minutos</span></td>
+                        </tr>
+                        <tr>
+                            <td>Actualizaciones</td>
+                            <td>Manuales, con riesgo de error</td>
+                            <td>Programadas y validadas por IA</td>
+                        </tr>
+                        <tr>
+                            <td>Consumo energético</td>
+                            <td>Fijo, sin control</td>
+                            <td>Optimizado con PoE scheduling <span class="check">(-30%)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Seguridad</td>
+                            <td>ACLs estáticas</td>
+                            <td>Detección de anomalías + fingerprinting IA</td>
+                        </tr>
+                        <tr>
+                            <td>MTTR</td>
+                            <td>Alto</td>
+                            <td>Reducción <span class="check">60-70%</span></td>
+                        </tr>
+                        <tr>
+                            <td>Falsas alarmas</td>
+                            <td>80% o más</td>
+                            <td>Menos del <span class="check">20%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- BENEFICIOS MEDIBLES -->
+            <div class="beneficios-grid">
+                <div class="beneficio-item">
+                    <div class="num">-30%</div>
+                    <div class="label">Ahorro energético</div>
+                    <div class="desc">PoE scheduling + EEE</div>
+                </div>
+                <div class="beneficio-item">
+                    <div class="num">-70%</div>
+                    <div class="label">MTTR</div>
+                    <div class="desc">Resolución de incidentes</div>
+                </div>
+                <div class="beneficio-item">
+                    <div class="num">70%</div>
+                    <div class="label">Downtime evitado</div>
+                    <div class="desc">Detección proactiva</div>
+                </div>
+                <div class="beneficio-item">
+                    <div class="num">18-24</div>
+                    <div class="label">ROI (meses)</div>
+                    <div class="desc">Por ahorro operativo</div>
+                </div>
+            </div>
+
+            <!-- METODOLOGÍA -->
+            <div class="metodologia">
+                <h4><i class="fas fa-list-check"></i> Nuestra metodología</h4>
+                <div class="steps">
+                    <span class="step"><span class="num">1</span> Descubrimiento</span>
+                    <span class="step"><span class="num">2</span> Diseño de migración</span>
+                    <span class="step"><span class="num">3</span> Ventana Core</span>
+                    <span class="step"><span class="num">4</span> Ventana Access</span>
+                    <span class="step"><span class="num">5</span> Incorporación a IAOps</span>
+                    <span class="step"><span class="num">6</span> Pruebas funcionales</span>
+                    <span class="step"><span class="num">7</span> Documentación + KT</span>
+                    <span class="step"><span class="num">8</span> Acompañamiento 30 días</span>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <div class="cta-text">
+                    <h4><i class="fas fa-rocket" style="margin-right:10px;"></i> ¿Listo para el salto a IA en 2026?</h4>
+                    <p>Diagnóstico gratuito · Demo con IAOps · Propuesta personalizada</p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="#" class="btn-primary"><i class="fas fa-calendar-check"></i> Agendar 15 min</a>
+                    <a href="#" class="btn-secondary"><i class="fas fa-phone-alt"></i> Contactar</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ========== FOOTER ========== -->
+        <div class="footer">
+            <div class="note">
+                <i class="fas fa-quote-left" style="opacity:0.4; margin-right:6px;"></i>
+                <strong>No migres switches, migra tu operación a IA.</strong>
+                Red autónoma, eficiente y preparada para 2026, con el vendor que elijas.
+            </div>
+            <div style="display:flex; gap:20px; align-items:center;">
+                <span><i class="far fa-copyright"></i> 2026 · Servicio profesional</span>
+                <span style="opacity:0.5;">|</span>
+                <span style="opacity:0.6; font-size:12px;">Vendor Agnostic</span>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
